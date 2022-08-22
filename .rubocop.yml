@@ -1,3 +1,4 @@
+
 AllCops:
   NewCops: enable
   Exclude:
@@ -50,7 +51,5 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
-AmbiguousBlockAssociation:
-  Enabled: false
-SymbolProc:
+Naming/PredicateName:
   Enabled: false
