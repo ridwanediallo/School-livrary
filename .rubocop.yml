@@ -53,3 +53,5 @@ Style/HashTransformValues:
   Enabled: false
 Naming/PredicateName:
   Enabled: false
+EndOfLine:
+  Enabled: false
