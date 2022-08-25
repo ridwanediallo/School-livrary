@@ -19,8 +19,7 @@ puts capitalized_person.correct_name
 capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
 puts capitalized_trimmed_person.correct_name
 
-
-puts "---------------------"
+puts '---------------------'
 
 student = Student.new('React', 55, 'Ridwan')
 classroom = Classroom.new('React')
@@ -28,4 +27,3 @@ classroom = Classroom.new('React')
 student.classroom = classroom
 p classroom
 p student
-
