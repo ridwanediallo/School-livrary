@@ -3,45 +3,49 @@ require_relative 'classes/student'
 require_relative 'classes/teacher'
 require_relative 'classes/rental'
 
-
 class App
+  def initialize()
+    puts
+    @books = []
+    @people = []
+    @rentals = []
+  end
 
-    def initialize()
-        puts
-        @books = []
-        @people = []
-        @rentals = []
+  def take_input_with_label(label)
+    print "#{label}: "
+    gets.chomp
+  end
+
+  def person_get_option
+    puts 'What you want to create:'
+    puts "\nPress 1 to add - A teacher Or Press 2 to add - A student"
+    puts 'Press any other key to return to main menu'
+
+    input = gets.chomp
+    return "\n#{input} is not a valid input to create a person" unless (1..2).include?(input.to_i)
+
+    input.to_i
+  end
+
+  def list_all_books
+    @books.each.with_index(1) do |book, index|
+      puts "\n#{index}.) Book's Title: #{book.title}, Author: #{book.author}"
+    end
+  end
+
+  def list_all_people(indexed)
+    text = ''
+
+    @people.each.with_index(1) do |person, i|
+      type = person.instance_of?(Student) ? 'Student' : 'Teacher'
+      data = "[#{type}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+
+      text += "\n#{i}) #{data}" if indexed
+      text += "\n#{data}" unless indexed
     end
 
-    def take_input_with_label(label)
-       print "#{label}: "
-       gets.chomp
-    end
-
-    def person_get_option
-       puts 'What you want to create:'
-       puts "\nPress 1 to add - A teacher Or Press 2 to add - A student"
-       puts 'Press any other key to return to main menu'
-
-       input = gets.chomp
-       return "\n#{input} is not a valid input to create a person" unless (1..2).include?(input.to_i)
-
-       input.to_i
-   end
-
-    def list_all_books
-        @books.each.with_index(1) do |book, index|
-            puts "\n#{index}.) Book's Title: #{book.title}, Author: #{book.author}"
-        end
-    end
-
-    def list_all_people()
-
-    @people.each_with_index do |person, index|
-      type = person.is_a?(Student) ? 'Student' : 'Teacher'
-      puts "#{index})  [#{type}] Name: #{person.name}, ID: #{person.id}, Age #{person.age}"
-    end
-    end
+    text
+  end
 
   def create_person(option)
     name = take_input_with_label('Name')
@@ -57,16 +61,15 @@ class App
       @people << Student.new(age, name, permission)
       puts 'Student Created Successfully'
     end
-   end
+  end
 
-    def create_book
-        title = take_input_with_label('Title')
-        author = take_input_with_label('Author')
+  def create_book
+    title = take_input_with_label('Title')
+    author = take_input_with_label('Author')
 
-        @books << Book.new(title, author)
-        puts 'Book was created successfully!'
-    end
-
+    @books << Book.new(title, author)
+    puts 'Book was created successfully!'
+  end
 
   def take_rental_options(type)
     case type
@@ -116,12 +119,11 @@ class App
   def print_rentals(person_id)
     return puts 'No rentals available to check. First create a Rental' if @rentals.empty?
 
-    person = @people.find { |person| person.id == person_id }
+    person = @people.find { |prsn| prsn.id == person_id }
     return puts "No rentals found for Person Id: #{person_id}" if person.nil?
 
     person.rentals.each do |rental|
-      puts "\nDate: #{rental.the_date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
+      puts "\nDate: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
     end
   end
 end
-# end

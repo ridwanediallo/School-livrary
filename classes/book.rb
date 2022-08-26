@@ -9,7 +9,6 @@ class Book
   end
 
   def add_rental(rental)
-    rental.book = self
     @rentals << rental unless @rentals.include?(rental)
   end
 end

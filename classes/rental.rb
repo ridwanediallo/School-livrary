@@ -4,15 +4,16 @@ class Rental
   attr_accessor :date
   attr_reader :book, :person
 
-  def initialize(date, book, person)
+  def initialize(date, person, book)
     @date = date
 
-    @the_date = Date.parse(@date).strftime('%a %d %b %Y')
+    date = Date.parse(@date).strftime('%a %d %b %Y')
 
     @book = book
-    @book.rentals << self
+    @book.rentals.push(self)
 
     @person = person
-    @person.rentals << self
+    @person.rentals.push(self)
+    # @person.rentals << self
   end
 end
