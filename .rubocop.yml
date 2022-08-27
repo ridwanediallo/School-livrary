@@ -55,3 +55,14 @@ Naming/PredicateName:
   Enabled: false
 EndOfLine:
   Enabled: false
+#---------------------
+PerceivedComplexity:
+  Enabled: false
+MethodLength:
+  Enabled: false
+CyclomaticComplexity:
+  Enabled: false
+UselessAssignment:
+  Enabled: false
+OptionalBooleanParameter:
+ Enabled: false
