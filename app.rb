@@ -33,7 +33,7 @@ class App
     end
   end
 
-  def list_all_people(indexed)
+  def list_all_people(indexed = false)
     text = ''
 
     @people.each.with_index(1) do |person, i|
