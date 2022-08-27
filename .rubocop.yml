@@ -64,3 +64,5 @@ CyclomaticComplexity:
   Enabled: false
 UselessAssignment:
   Enabled: false
+OptionalBooleanParameter:
+ Enabled: false

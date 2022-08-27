@@ -32,7 +32,7 @@ def main
     when 1
       puts app.list_all_books
     when 2
-       puts "\n#{app.list_all_people}"
+      puts "\n#{app.list_all_people}"
     when 3
       option = app.person_get_option
       app.create_person(option) unless option.is_a? String
